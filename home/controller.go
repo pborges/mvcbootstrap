@@ -22,7 +22,7 @@ func (this *Controller)Index(w http.ResponseWriter, r *http.Request) {
 	model := mvc.NewViewModel()
 	mvc.RenderLayout(model, path.Join(TemplatePrefix, "index.tmpl.html"))(w, r)
 }
-func (this *Controller)Test(w http.ResponseWriter, r *http.Request) {
+func (this *Controller)About(w http.ResponseWriter, r *http.Request) {
 	model := mvc.NewViewModel()
-	mvc.RenderLayout(model, path.Join(TemplatePrefix, "index.tmpl.html"))(w, r)
+	mvc.RenderLayout(model, path.Join(TemplatePrefix, "about.tmpl.html"))(w, r)
 }

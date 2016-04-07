@@ -12,12 +12,18 @@ const ListenAddress string = ":8080"
 
 func main() {
 	log.SetLogLevel(log.LevelDebug)
-	mvc.CacheTemplates = false
+
+	// MVC Settings
+	mvc.CacheTemplates = true
+	mvc.Config.SiteName = "MVC Bootstrap"
+	mvc.Config.LeftNav.Add("About", "/about")
+
 	log.Info("starting")
 	r := mux.NewRouter()
 
 	homeController := home.RegisterController()
 	r.HandleFunc("/", homeController.Index).Methods("GET")
+	r.HandleFunc("/about", homeController.About).Methods("GET")
 
 	// static
 	r.PathPrefix("/").Handler(http.FileServer(http.Dir("./static/")))
